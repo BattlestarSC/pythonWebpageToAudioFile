@@ -62,9 +62,51 @@ top = tkinter.Tk()
 # banner widget
 bannerLabel = tkinter.Label(top, text="Web Article to MP3", font='Helvetica 18 bold')
 
+# main settings frame
+mainFrame = tkinter.Frame(top)
+# url frame
+urlBox = tkinter.Frame(mainFrame)
+# url label
+urlLabel = tkinter.Label(urlBox, text="Article url")
+# url entry
+urlEntry = tkinter.Entry(urlBox)
+# grid pack
+urlLabel.grid(row=0,
+	column=0,
+	sticky='w',
+	pady=2)
+urlEntry.grid(row=0,
+	column=1,
+	pady=2)
+
+# the filename entry stuff
+fileBox = tkinter.Frame(mainFrame)
+# url label
+fileLabel = tkinter.Label(fileBox, text="Output filename")
+# url entry
+fileEntry = tkinter.Entry(fileBox)
+# grid pack
+fileLabel.grid(row=0,
+	column=0,
+	sticky='w',
+	pady=2)
+fileEntry.grid(row=0,
+	column=1,
+	pady=2)
+
+# pack main shit
+urlBox.grid(row=0,
+	column=0,
+	pady=2)
+fileBox.grid(row=1,
+	column=0,
+	pady=2)
+
 # packing party
 bannerLabel.pack(fill="y",
 	expand=True)
-
+# pack the frames
+mainFrame.pack(fill="both",
+	expand=True)
 # run the main graphics loop
 top.mainloop()
