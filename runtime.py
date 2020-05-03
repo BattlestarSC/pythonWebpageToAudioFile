@@ -22,7 +22,7 @@ def createAudioFile(filename : str, url : str, speed : int = 200):
 	# fix filename if needed for pyttsx3
 	if len(filename) < 5:
 		filename = filename + ".mp3"
-	elif ".mp3" is not in filename[-4]:
+	elif filename[-4] is not ".mp3":
 		filename = filename + ".mp3"
 
 	# check that the filename/location is valid
@@ -44,22 +44,27 @@ def createAudioFile(filename : str, url : str, speed : int = 200):
 	text = soup.text
 
 	# init speech engine
-    engine = pyttsx3.init()
+	engine = pyttsx3.init()
     # set speed
-    engine.setProperty('rate', speed)
+	engine.setProperty('rate', speed)
     # write to the file location
-    engine.write_to_file(text, filename)
+	engine.write_to_file(text, filename)
     # run
-    engine.runAndWait()
-    engine.stop()
+	engine.runAndWait()
+	engine.stop()
 
     # return to make sure it was completed
-    return "Wrote audio to " + filename
+	return "Wrote audio to " + filename
 
 # top/root level widget
 top = tkinter.Tk()
 
+# banner widget
+bannerLabel = tkinter.Label(top, text="Web Article to MP3", font='Helvetica 18 bold')
 
+# packing party
+bannerLabel.pack(fill="y",
+	expand=True)
 
 # run the main graphics loop
 top.mainloop()
