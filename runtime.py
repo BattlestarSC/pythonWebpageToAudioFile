@@ -81,9 +81,9 @@ urlEntry.grid(row=0,
 
 # the filename entry stuff
 fileBox = tkinter.Frame(mainFrame)
-# url label
+# file label
 fileLabel = tkinter.Label(fileBox, text="Output filename")
-# url entry
+# file entry
 fileEntry = tkinter.Entry(fileBox)
 # grid pack
 fileLabel.grid(row=0,
@@ -94,11 +94,34 @@ fileEntry.grid(row=0,
 	column=1,
 	pady=2)
 
+# the read speed entry boxes
+# the filename entry stuff
+speedBox = tkinter.Frame(mainFrame)
+# speed label
+speedLabel = tkinter.Label(speedBox, text="Read speed (words/minute)")
+# url entry
+speedEntry = tkinter.Entry(speedBox)
+# grid pack
+speedLabel.grid(row=0,
+	column=0,
+	sticky='w',
+	pady=2)
+speedEntry.grid(row=0,
+	column=1,
+	pady=2)
+
+# Run Button
+runButton = tkinter.Button(top,
+	text="Run")
+
 # pack main shit
 urlBox.grid(row=0,
 	column=0,
 	pady=2)
 fileBox.grid(row=1,
+	column=0,
+	pady=2)
+speedBox.grid(row=2,
 	column=0,
 	pady=2)
 
@@ -107,6 +130,9 @@ bannerLabel.pack(fill="y",
 	expand=True)
 # pack the frames
 mainFrame.pack(fill="both",
+	expand=True)
+# pack the button 
+runButton.pack(fill="y",
 	expand=True)
 # run the main graphics loop
 top.mainloop()
