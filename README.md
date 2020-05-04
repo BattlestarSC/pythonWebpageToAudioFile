@@ -2,7 +2,7 @@
 
 ## Install/usage
 
-You need python 3.x installed. 
+You need python 3.x installed and the command line git client. 
 
 There are a few required python libraries so...
 ```python -m pip install requests pyttsx3 beautifulsoup4 git+git://github.com/bookieio/breadability.git```
