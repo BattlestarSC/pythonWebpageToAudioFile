@@ -45,7 +45,7 @@ def createAudioFile(filename : str, url : str, speed : int = 200):
 		return "Unable to get page " + url 
 
 	# now actually get the response
-	response = response.get(url)
+	response = requests.get(url)
 
 	# fix filename if needed for pyttsx3
 	if len(filename) < 5:
