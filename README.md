@@ -5,7 +5,12 @@
 You need python 3.x installed. 
 
 There are a few required python libraries so...
-```python -m pip install requests tkinter pyttsx3 beautifulsoup4 git+git://github.com/bookieio/breadability.git```
+```python -m pip install requests pyttsx3 beautifulsoup4 git+git://github.com/bookieio/breadability.git```
+
+If on windows:
+```python -m pip install pywin32```
+And you might not have tkinter
+```python -m pip install tkinter```
 
 Run using `python runtime.py`
 
