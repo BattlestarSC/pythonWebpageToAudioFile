@@ -8,8 +8,20 @@ import os
 def audioCreationWrapper(filenameWidget, urlWidget, speedWidget, statusWidget):
 	fname = str(filenameWidget.get())
 	url = str(urlWidget.get())
+
+	# make sure url and filename is valid
+	if url is "" or url is None:
+		statusWidget.config(text="Need a valid URL")
+		return
+	if fname == "" or fname is None:
+		statusWidget.config(text="Need a valid output filename")
+		return
+
 	speed = speedWidget.get()
-	if speed is None:
+	if not speed.isnumeric():
+		statusWidget.config(text="Speed must be a valid number (decimals will be truncated)")
+		return
+	elif speed is "":
 		speed = 200
 	else:
 		speed = int(speed)
@@ -24,16 +36,16 @@ def audioCreationWrapper(filenameWidget, urlWidget, speedWidget, statusWidget):
 
 def createAudioFile(filename : str, url : str, speed : int = 200):
 
-	# make sure url and filename is valid
-	if url == None:
-		return "Need URL"
-	if filename == None:
-		return "Need filename"
-
 	# check that the url is valid
-	response = requests.get(url)
-	if response.status_code is not 200:
-		return "Unable to get page " + url
+	try:
+		response = requests.get(url)
+		if response.status_code is not 200:
+			return "Unable to get page " + url
+	except:
+		return "Unable to get page " + url 
+
+	# now actually get the response
+	response = response.get(url)
 
 	# fix filename if needed for pyttsx3
 	if len(filename) < 5:
