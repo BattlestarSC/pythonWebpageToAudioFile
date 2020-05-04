@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 from breadability.readable import Article
 import os
 
+def audioCreationWrapper(filenameWidget, urlWidget, speedWidget, statusWidget):
+	pass
 
 def createAudioFile(filename : str, url : str, speed : int = 200):
 
@@ -110,9 +112,24 @@ speedEntry.grid(row=0,
 	column=1,
 	pady=2)
 
+# Status/output box (used for failure/completion outputs)
+statusFrame = tkinter.Frame(top)
+statsText = tkinter.Label(statusFrame,
+	text="Status: ")
+statsLabel = tkinter.Label(statusFrame,
+	text="Waiting")
+statsText.grid(row=0,
+	column=0,
+	sticky='w',
+	pady=2)
+statsLabel.grid(row=0,
+	column=1,
+	pady=2)
+
 # Run Button
 runButton = tkinter.Button(top,
-	text="Run")
+	text="Run",
+	command= lambda: audioCreationWrapper(fileEntry, urlEntry, speedEntry, statsLabel))
 
 # pack main shit
 urlBox.grid(row=0,
@@ -130,6 +147,9 @@ bannerLabel.pack(fill="y",
 	expand=True)
 # pack the frames
 mainFrame.pack(fill="both",
+	expand=True)
+#pack the output area
+statusFrame.pack(fill="y",
 	expand=True)
 # pack the button 
 runButton.pack(fill="y",
