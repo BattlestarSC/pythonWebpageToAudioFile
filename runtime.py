@@ -6,7 +6,21 @@ from breadability.readable import Article
 import os
 
 def audioCreationWrapper(filenameWidget, urlWidget, speedWidget, statusWidget):
-	pass
+	fname = str(filenameWidget.get())
+	url = str(urlWidget.get())
+	speed = speedWidget.get()
+	if speed is None:
+		speed = 200
+	else:
+		speed = int(speed)
+
+	# run command
+	output = createAudioFile(fname,
+		url,
+		speed)
+
+	# update status
+	statusWidget.config(text=output)
 
 def createAudioFile(filename : str, url : str, speed : int = 200):
 
@@ -50,7 +64,7 @@ def createAudioFile(filename : str, url : str, speed : int = 200):
     # set speed
 	engine.setProperty('rate', speed)
     # write to the file location
-	engine.write_to_file(text, filename)
+	engine.save_to_file(text, filename)
     # run
 	engine.runAndWait()
 	engine.stop()
